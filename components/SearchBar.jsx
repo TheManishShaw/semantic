@@ -7,7 +7,7 @@ import Loader from "./Loader";
 const SearchBar = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [url, setUrl] = useState();
+  const [url, setUrl] = useState("semantic");
   const {
     register,
     handleSubmit,
@@ -33,10 +33,14 @@ const SearchBar = () => {
   const handleChange = (e) => {
     console.log(e.target.value);
     if (e.target.value === "semantic") {
-      setUrl("https://demo.thesciencepark.dev/get_rcmd?q=");
+      setUrl("https://demo.thesciencepark.dev/get_a_desc?q=");
     }
     if (e.target.value === "naics_semantic") {
-      setUrl("https://demo.thesciencepark.dev/get_rcmd2?q=");
+      setUrl("https://demo.thesciencepark.dev/get_naics_d?q=");
+    }
+    if (e.target.value === "Hybrid_Semantic") {
+      setUrl("https://demo.thesciencepark.dev/get_hybe?q=");
+      
     }
   };
   return (
@@ -88,8 +92,11 @@ const SearchBar = () => {
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5  "
           onChange={(e) => handleChange(e)}
         >
+
+          <option value="" selected disabled>Select Search type</option>
           <option value="semantic">Semantic Search</option>
           <option value="naics_semantic">NAICS Semantic Search</option>
+          <option value="Hybrid_Semantic">Hybrid Semantic Search</option>
         </select>
       </div>
 
